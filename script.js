@@ -83,12 +83,6 @@ link.setAttribute("href", "https://www.google.com/");
 /*
 Exercicio 4)
 
-
-
-
-
-*/
-
 const animaisList = document.querySelectorAll(".animais-lista img");
 const animais = document.querySelector(".animais-lista");
 // Verifique a distância da primeira imagem
@@ -120,3 +114,5 @@ links.forEach((link) => {
 // adicione a classe menu-mobile ao menu
 const menuMobile = window.matchMedia("(max-width: 720px)").matches;
 if (menuMobile) document.querySelector(".menu").classList.add("menu-mobile");
+
+*/
