@@ -167,3 +167,36 @@ function textScale(e) {
 
 window.addEventListener("keydown", textScale);
 */
+
+/*
+Exercicio 6) 
+
+// Duplique o menu e adicione ele em copy
+const menu = document.querySelector(".menu");
+
+const novoMenu = menu.cloneNode(true);
+
+const copy = document.querySelector(".copy");
+copy.appendChild(novoMenu);
+
+// Selecione o primeiro DT da dl de Faq
+const faq = document.querySelector(".faq");
+console.log(faq);
+const dl = faq.querySelector("dl");
+console.log(dl);
+
+const firstDT = dl.firstElementChild;
+console.log(firstDT);
+
+// Selecione o DD referente ao primeiro DT
+const DD = firstDT.nextElementSibling;
+console.log(DD);
+
+// Substitua o conteúdo html de .faq pelo de .animais
+const body = document.querySelector("body");
+console.log(body);
+const animais = document.querySelector(".animais");
+console.log(animais);
+
+faq.innerHTML = animais.innerHTML;
+*/
