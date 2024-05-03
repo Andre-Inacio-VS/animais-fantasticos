@@ -12,6 +12,10 @@ ul {
   list-style: none;
 }
 
+html.scaleText {
+  font-size: 150%;
+}
+
 body {
   background: #faf6ed;
   color: #222;
