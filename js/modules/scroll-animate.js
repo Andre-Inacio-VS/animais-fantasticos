@@ -6,10 +6,11 @@ export default function initScrollAnimate() {
         sections.forEach((section) => {
             const sectionTop = section.getBoundingClientRect().top;
 
-            if (sectionTop <= windowHeight)
+            if (sectionTop <= windowHeight) {
                 section.classList.add('ativo')
-            else
+            } else if (section.classList.contains('ativo')) {
                 section.classList.remove('ativo')
+            }
 
         })
     }
