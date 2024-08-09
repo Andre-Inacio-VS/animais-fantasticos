@@ -5,13 +5,15 @@ export default function initTooltip() {
     function verTooltip(e) {
         const tooltipBox = criarTooltip(this)
 
-        moveTooltip.tooltipBox = tooltipBox
-        moveTooltip.element = this
-        this.addEventListener('mousemove', moveTooltip)
+        if (this.parentElement.classList.contains('ativo')) {
+            moveTooltip.tooltipBox = tooltipBox
+            moveTooltip.element = this
+            this.addEventListener('mousemove', moveTooltip)
 
-        hiddeTootlip.tooltipBox = tooltipBox
-        hiddeTootlip.element = this
-        this.addEventListener('mouseleave', hiddeTootlip)
+            hiddeTootlip.tooltipBox = tooltipBox
+            hiddeTootlip.element = this
+            this.addEventListener('mouseleave', hiddeTootlip)
+        }
     }
 
     function criarTooltip(element) {
@@ -41,8 +43,8 @@ export default function initTooltip() {
                 this.tooltipBox.style.left = e.pageX + 20 + 'px'
                 this.tooltipBox.style.right = 'auto'
             } else {
-                this.tooltipBox.style.right = (window.innerWidth - e.pageX + 20) + 'px'
                 this.tooltipBox.style.left = 'auto'
+                this.tooltipBox.style.right = (window.innerWidth - e.pageX + 20) + 'px'
             }
             this.element.removeEventListener('mouseleave', moveTooltip)
         },

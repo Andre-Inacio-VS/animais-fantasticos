@@ -4,7 +4,7 @@ export default function initNumerosAnimate() {
 
         numeros.forEach((numero) => {
             const total = +numero.innerText
-            const i = Math.floor(total / 100)
+            const i = Math.floor(total / 55)
 
             let start = 0
             const timer = setInterval(() => {
