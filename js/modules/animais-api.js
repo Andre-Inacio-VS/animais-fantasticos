@@ -12,22 +12,28 @@ export default function initAnimais() {
     }
 
     async function buscarAnimal(name, index) {
-        const res = await fetch(`${url}=${name}`, configReq)
-        const animaisJSON = await res.json()
+        try {
+            const res = await fetch(`${url}=${name}`, configReq)
+            if (res.ok) {
+                const animaisJSON = await res.json()
 
-        animaisJSON.forEach(animal => {
-            switch (animal.name) {
-                case "Eastern Gray Squirrel":
-                    dataNumero[index].innerText = animal.characteristics.estimated_population_size.replace(' million +', '000000')
-                    break;
-                case name:
-                    dataNumero[index].innerText = animal.characteristics.estimated_population_size.replace(',', '')
-                    break;
-                default:
-                    break;
+                animaisJSON.forEach(animal => {
+                    switch (animal.name) {
+                        case "Eastern Gray Squirrel":
+                            dataNumero[index].innerText = animal.characteristics.estimated_population_size.replace(' million +', '000000')
+                            break;
+                        case name:
+                            dataNumero[index].innerText = animal.characteristics.estimated_population_size.replace(',', '')
+                            break;
+                        default:
+                            break;
+                    }
+                })
+                initNumerosAnimate();
             }
-        })
-        initNumerosAnimate();
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     dataNumero.forEach((num, index) => {
