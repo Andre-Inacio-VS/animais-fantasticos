@@ -1,44 +1,36 @@
 import AnimaNumeros from './anima-numeros.js'
 
-export default function initAnimais() {
-    const dataNumero = document.querySelectorAll('[data-numero]')
-    const url = 'https://api.api-ninjas.com/v1/animals?name'
-    const configReq = {
-        method: 'GET',
-        headers: {
-            'X-Api-Key': 'kXbUtouOCICqD8g38ZcSHIEo6d9iiQRpoeCwcTjo'
-        },
-        contentType: 'application/json',
+export default function fetchAnimais(url, target) {
+    function createAnimal(animal) {
+        const div = document.createElement('div');
+        div.classList.add('numero-animal');
+        div.innerHTML = `<h3>${animal.specie}</h3><span data-numero>${animal.total}</span>`;
+        return div;
     }
 
-    async function buscarAnimal(name, index) {
-        try {
-            const res = await fetch(`${url}=${name}`, configReq)
-            if (res.ok) {
-                const animaisJSON = await res.json()
+    function preencherAnimais(animal) {
+        const numerosGrid = document.querySelector(target);
+        const divAnimal = createAnimal(animal);
+        numerosGrid.appendChild(divAnimal);
+    }
 
-                animaisJSON.forEach(animal => {
-                    switch (animal.name) {
-                        case "Eastern Gray Squirrel":
-                            dataNumero[index].innerText = animal.characteristics.estimated_population_size.replace(' million +', '000000')
-                            break;
-                        case name:
-                            dataNumero[index].innerText = animal.characteristics.estimated_population_size.replace(',', '')
-                            break;
-                        default:
-                            break;
-                    }
-                })
-                const animaNumeros = new AnimaNumeros('[data-numero]', 'ativo', '.numeros');
-                animaNumeros.init();
-            }
-        } catch (error) {
-            console.log(error)
+    function animaAnimaisN() {
+        const animaNumeros = new AnimaNumeros('[data-numero]', 'ativo', '.numeros');
+        animaNumeros.init();
+    }
+
+    async function criarAnimais() {
+        try {
+            const animaisResponse = await fetch(url);
+            const animaisJSON = await animaisResponse.json();
+
+            animaisJSON.forEach(animal => preencherAnimais(animal));
+
+            animaAnimaisN();
+        } catch (erro) {
+            console.log(erro);
         }
     }
 
-    dataNumero.forEach((num, index) => {
-        buscarAnimal(num.dataset.nome, index)
-    })
-
+    return criarAnimais();
 }
