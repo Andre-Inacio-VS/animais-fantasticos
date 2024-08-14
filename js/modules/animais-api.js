@@ -1,4 +1,4 @@
-import initNumerosAnimate from './anima-numeros.js'
+import AnimaNumeros from './anima-numeros.js'
 
 export default function initAnimais() {
     const dataNumero = document.querySelectorAll('[data-numero]')
@@ -29,7 +29,8 @@ export default function initAnimais() {
                             break;
                     }
                 })
-                initNumerosAnimate();
+                const animaNumeros = new AnimaNumeros('[data-numero]', 'ativo', '.numeros');
+                animaNumeros.init();
             }
         } catch (error) {
             console.log(error)
