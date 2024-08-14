@@ -6,7 +6,7 @@ export default function initAnimais() {
     const configReq = {
         method: 'GET',
         headers: {
-            'X-Api-Key': 'YgYKjBdU2XZMwitEl7j3PA==dyKqMuXB0NfWvyPm'
+            'X-Api-Key': 'kXbUtouOCICqD8g38ZcSHIEo6d9iiQRpoeCwcTjo'
         },
         contentType: 'application/json',
     }

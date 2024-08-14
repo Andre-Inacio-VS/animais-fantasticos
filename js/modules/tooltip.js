@@ -2,7 +2,7 @@ export default function initTooltip() {
 
     const tooltips = document.querySelectorAll('[data-tooltip]')
 
-    function verTooltip(e) {
+    function verTooltip() {
         const tooltipBox = criarTooltip(this)
 
         if (this.parentElement.classList.contains('ativo')) {
