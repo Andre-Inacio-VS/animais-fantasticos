@@ -1,12 +1,16 @@
-export default function initScrollAnimate() {
-    const windowHeight = window.innerHeight * 0.6;
-    const sections = document.querySelectorAll('[data-js="scroll"]')
+export default class ScrollAnimate {
+    constructor(sections) {
+        this.windowHeight = window.innerHeight * 0.6;
+        this.sections = document.querySelectorAll(sections);
 
-    function animaScroll() {
-        sections.forEach((section) => {
+        this.animaScroll = this.animaScroll.bind(this)
+    }
+
+    animaScroll() {
+        this.sections.forEach((section) => {
             const sectionTop = section.getBoundingClientRect().top;
 
-            if (sectionTop <= windowHeight) {
+            if (sectionTop <= this.windowHeight) {
                 section.classList.add('ativo')
             } else if (section.classList.contains('ativo')) {
                 section.classList.remove('ativo')
@@ -15,6 +19,8 @@ export default function initScrollAnimate() {
         })
     }
 
-    animaScroll();
-    window.addEventListener('scroll', animaScroll)
+    init() {
+        this.animaScroll()
+        window.addEventListener('scroll', this.animaScroll)
+    }
 }
