@@ -3,10 +3,10 @@ import Accordion from './modules/accordion.js'
 import TabNav from './modules/tab-nav.js'
 import Modal from './modules/modal.js'
 import Tooltip from './modules/tooltip.js'
+import ScrollAnimate from './modules/scroll-animate.js'
 import initDropdownMenu from './modules/dropdown-menu.js'
 import initMenuMobile from './modules/menu-mobile.js'
 import initFuncionamento from './modules/funcionamento.js'
-import initScrollAnimate from './modules/scroll-animate.js'
 
 import fetchAnimais from './modules/animais-api.js'
 import fetchBitcoin from './modules/fetch-bitcoin.js'
@@ -26,10 +26,12 @@ modal.init();
 const tooltip = new Tooltip('[data-tooltip]');
 tooltip.init();
 
+const scrollAnimate = new ScrollAnimate('[data-js="scroll"]');
+scrollAnimate.init();
+
 initDropdownMenu();
 initMenuMobile();
 initFuncionamento();
-initScrollAnimate();
 
 fetchAnimais('../animaisapi.json', '.numeros-grid');
 fetchBitcoin('https://blockchain.info/ticker', '.btc-preco');
