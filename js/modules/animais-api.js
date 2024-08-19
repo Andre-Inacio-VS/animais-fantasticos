@@ -28,7 +28,7 @@ export default function fetchAnimais(url, target) {
 
             animaAnimaisN();
         } catch (erro) {
-            console.log(erro);
+            console.log(Error(erro));
         }
     }
 
